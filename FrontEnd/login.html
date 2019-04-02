@@ -147,6 +147,17 @@
             id=responseText;
 
             console.log(responseText);
+
+            if(id=="Login successful"){
+                localStorage.setItem('Authentication', 'true')
+                localStorage.setItem('User', userName)
+                location.href = "logindetail.html";
+            }else{
+                localStorage.setItem('Authentication', 'false')
+                return;
+            }
+
+
         }).fail(function(jxhr,statusText, error){
             $("#div-status").removeClass("alert-primary");
             $("#div-status").addClass("alert-danger");
@@ -155,14 +166,7 @@
 
         $("#div-status").show();
 
-        if(id=="Login successful"){
-            localStorage.setItem('Authontication', 'true')
-            localStorage.setItem('User', userName)
-            location.href = "logindetail.html";
-        }else{
-            localStorage.setItem('Authontication', 'false')
-            return;
-        }
+
 
 
 
